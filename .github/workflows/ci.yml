@@ -11,7 +11,7 @@ jobs:
     steps:
       - 
         name: Check out the repo
-        uses: action/checkout@v4
+        uses: action/checkout@v3
       -
         name: run tests
         uses: liatrio/github-actions/apprentice-action@master 
