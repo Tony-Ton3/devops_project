@@ -3,7 +3,7 @@ import express from 'express';
 
 const app = express();
 
-require('dotenv').config();
+import { config } from 'dotenv';
 
 //if PORT is not defined in the environment, use 3000
 const PORT = process.env.PORT || 3000;
