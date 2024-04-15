@@ -4,7 +4,6 @@ import { config } from 'dotenv';
 
 const app = express();
 
-//if PORT is not defined in the environment, use 3000
 const httpPort = 80;
 
 function getTimeStamp(){
@@ -17,9 +16,8 @@ app.get('/', (req, res) => {
   );
 });
 
-
 //listen to port for incoming requests, this essentially starts the server
-app.listen(PORT, () => {
+app.listen(httpPort, () => {
   console.log(`Runninng on port ${httpPort}`);
 });
 
