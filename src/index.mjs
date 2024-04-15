@@ -12,8 +12,11 @@ function getTimeStamp(){
 }
 
 app.get('/', (req, res) => {
-  res.send(JSON.stringify({ message: 'My name is Tony', timestamp: getTimeStamp() }));
+  res.status(200).send(
+    JSON.stringify({ message: 'My name is Tony', timestamp: getTimeStamp() })
+  );
 });
+
 
 //listen to port for incoming requests, this essentially starts the server
 app.listen(PORT, () => {
