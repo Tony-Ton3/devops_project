@@ -10,6 +10,6 @@ RUN npm install
 # copies index.mjs within src into the docker image 
 COPY . .
 
-EXPOSE ${PORT} 
+EXPOSE 80
 
 CMD [ "npm", "run", "start"] 
