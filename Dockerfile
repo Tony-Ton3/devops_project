@@ -1,4 +1,4 @@
-FROM node:20.11.0-alpine
+FROM node:latest
 
 WORKDIR /src
 
@@ -7,7 +7,7 @@ COPY package*.json ./
 
 RUN npm install
 
-# copies rest of the files
+# copies index.mjs within src into the docker image 
 COPY . .
 
 EXPOSE ${PORT} 
