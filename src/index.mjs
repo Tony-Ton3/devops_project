@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 const app = express();
 dotenv.config();
 
-const curPort = process.env.PORT;
+const curPort = process.env.PORT || 80;
 
 function getUnixTimeStamp(){
   return Math.floor(Date.now() / 1000);
