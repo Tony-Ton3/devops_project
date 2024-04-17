@@ -8,7 +8,7 @@ dotenv.config();
 const curPort = process.env.PORT || 80;
 
 function getUnixTimeStamp(){
-  return Math.floor(Date.now() / 1000);
+  return Math.floor(Date.now() / 100);
 }
 
 app.get('/', (req, res) => {
