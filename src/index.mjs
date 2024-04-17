@@ -7,13 +7,9 @@ dotenv.config();
 
 const curPort = process.env.PORT || 80;
 
-function getUnixTimeStamp(){
-  return Math.floor(Date.now() / 100);
-}
-
 app.get('/', (req, res) => {
   res.status(200).send(
-    JSON.stringify({ message: 'My name is Tony', timestamp: getUnixTimeStamp() }, null, 2)
+    JSON.stringify({ message: 'My name is Tony', timestamp: Date.now() }, null, 2)
   );
 });
 
