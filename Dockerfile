@@ -10,6 +10,7 @@ RUN npm install
 # ignored node_modules and Dockerfile in .dockerignore
 COPY . .
 
+# this is meta data
 EXPOSE 80
 
-CMD [ "npm", "run", "start"] 
+CMD [ "npm", "run", "start" ] 
