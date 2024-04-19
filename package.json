@@ -2,11 +2,11 @@
   "name": "liatrio_interview_exercise",
   "version": "1.0.0",
   "description": "",
-  "main": "index.mjs",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/index.mjs",
-    "start": "PORT=80 node ./src/index.mjs"
+    "start": "PORT=80 node ./src/index.mjs",
+    "type": "module"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,6 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
   },
-  "type": "module",
   "devDependencies": {
     "nodemon": "^3.1.0"
   }
