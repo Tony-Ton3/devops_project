@@ -20,7 +20,7 @@ jobs:
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/test-image:latest .
 
       - name: Run Docker Image
-        run: docker run -d -p 80:80 --name active-container test-image:latest
+        run: docker run -d -p 80:80 --name active-container ${{ secrets.DOCKER_USERNAME }}/test-image:latest
 
       - name: Run Liatrio's tests
         uses: liatrio/github-actions/apprentice-action@808117af9b4a1e57c4cb79dbcb2d25de5ea3c68d
