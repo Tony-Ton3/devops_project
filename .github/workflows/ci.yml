@@ -48,8 +48,9 @@ jobs:
       - name: Push Docker Image to Artifact Registry
         run: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
-          docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio-exercise/dockerhub-image
-          docker push us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image
+          docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest
+          docker push us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest 
+
     
       
 
