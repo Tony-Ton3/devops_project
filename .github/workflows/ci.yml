@@ -45,12 +45,9 @@ jobs:
           service_account: '179801824443-compute@developer.gserviceaccount.com'
           project_id: 'liatrio-exercise-420917'
 
-      - name: Pull Docker Image from Docker Hub
-        run: 
-            docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
-
-      - name: Tag and Push Docker Image to Artifact Registry
+      - name: Push Docker Image to Artifact Registry
         run: |
+          docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
           docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio-exercise/dockerhub-image
           docker push us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image
     
