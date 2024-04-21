@@ -26,7 +26,7 @@ jobs:
       - name: Run Docker Image
         run: docker run -d -p 80:80 --name active-container ${{ secrets.DOCKER_USERNAME }}/test-image:latest
 
-      - name: Run Liatrio's tests
+      - name: Run Liatrio's Unit tests
         uses: liatrio/github-actions/apprentice-action@808117af9b4a1e57c4cb79dbcb2d25de5ea3c68d
 
       - name: Log into Docker Hub
@@ -38,8 +38,8 @@ jobs:
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/test-image:latest
 
-       # Add GCP Authentication with Workload Identity
-      - uses: google-github-actions/auth@v1
+      - name: GCP Authentication with Workload Identity
+        uses: google-github-actions/auth@v1
         with:
           workload_identity_provider: 'projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider'
           service_account: '179801824443-compute@developer.gserviceaccount.com'
@@ -49,12 +49,10 @@ jobs:
         run: 
             docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
 
-
-      # - name: Tag and Push Docker Image to Artifact Registry
-      #   run: |
-      #     docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
-      #     docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest asia-southeast1-docker.pkg.dev/liatrio-exercise-420917/my-repo/your-image-name:latest # Adjust if needed
-      #     docker push asia-southeast1-docker.pkg.dev/liatrio-exercise-420917/my-repo/your-image-name:latest 
+      - name: Tag and Push Docker Image to Artifact Registry
+        run: |
+          docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio-exercise/dockerhub-image
+          docker push us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image
     
       
 
