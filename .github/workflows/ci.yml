@@ -12,6 +12,10 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -40,12 +44,12 @@ jobs:
           workload_identity_provider: 'projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider'
           service_account: '179801824443-compute@developer.gserviceaccount.com'
     
-        # Modify Push (and potentially Image Tag) 
-      - name: Push Docker Image to Artifact Registry
-        run: |
-          docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
-          docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest asia-southeast1-docker.pkg.dev/liatrio-exercise-420917/my-repo/my-image:latest
-          docker push asia-southeast1-docker.pkg.dev/liatrio-exercise-420917/my-repo/my-image:latest
+      #   # Modify Push (and potentially Image Tag) 
+      # - name: Push Docker Image to Artifact Registry
+      #   run: |
+      #     docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
+      #     docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest asia-southeast1-docker.pkg.dev/liatrio-exercise-420917/my-repo/my-image:latest
+      #     docker push asia-southeast1-docker.pkg.dev/liatrio-exercise-420917/my-repo/my-image:latest
 
 
       
