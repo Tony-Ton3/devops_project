@@ -30,9 +30,23 @@ jobs:
         with: 
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
-
+      
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/test-image:latest
+
+       # Add GCP Authentication with Workload Identity
+      - uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: 'projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider'
+          service_account: '179801824443-compute@developer.gserviceaccount.com'
+    
+        # Modify Push (and potentially Image Tag) 
+      - name: Push Docker Image to Artifact Registry
+        run: |
+          docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest asia-southeast1-docker.pkg.dev/liatrio-exercise-420917/my-repo/my-image:latest
+          docker push asia-southeast1-docker.pkg.dev/liatrio-exercise-420917/my-repo/my-image:latest
+
 
       
 
