@@ -41,6 +41,7 @@ jobs:
       - name: GCP Authentication with Workload Identity
         uses: google-github-actions/auth@v2
         with:
+          
           # worklaod idenity federation enables applications to replace long-lived service account keys
           # with short-lived access tokens 
           workload_identity_provider: 'projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider'
