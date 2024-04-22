@@ -41,9 +41,9 @@ jobs:
       - name: GCP Authentication with Workload Identity
         uses: google-github-actions/auth@v1
         with:
-          workload_identity_provider: 'projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider'
-          service_account: '179801824443-compute@developer.gserviceaccount.com'
-          project_id: 'liatrio-exercise-420917'
+          workload_identity_provider: projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider
+          service_account: 179801824443-compute@developer.gserviceaccount.com
+          project_id: liatrio-exercise-420917
 
       - name: Push Docker Image to Artifact Registry
         run: |
