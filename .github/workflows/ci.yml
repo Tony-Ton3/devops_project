@@ -39,18 +39,18 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/test-image:latest
 
       - name: GCP Authentication with Workload Identity
-        uses: google-github-actions/auth@v1
+        uses: google-github-actions/auth@v2
         with:
           # worklaod idenity federation enables applications to replace long-lived service account keys with short-lived access tokens 
           workload_identity_provider: 'projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider'
-          service_account: '179801824443-compute@developer.gserviceaccount.com'
           project_id: 'liatrio-exercise-420917'
 
-      - name: Push Docker Image to Artifact registry
-        run: |
-          docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
-          docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest
-          docker push us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest 
+      # - name: Push Docker Image to Artifact registry
+      # #tagging configures docker image to be pushed to a specific location
+      #   run: |
+      #     docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
+      #     docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest
+      #     docker push us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest 
 
     
       
