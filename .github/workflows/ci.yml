@@ -45,6 +45,7 @@ jobs:
           token_format: access_token
           workload_identity_provider: projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github
           service_account: 179801824443-compute@developer.gserviceaccount.com
+          project_id: liatrio-exercise-420917 
 
       - name: Login to GAR
         uses: docker/login-action@v3
