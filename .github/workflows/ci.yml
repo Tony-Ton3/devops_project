@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: 'read'
-      id-token: 'write'
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
 
     steps:
       - name: Check out the repo
@@ -41,9 +41,10 @@ jobs:
       - name: GCP Authentication with Workload Identity
         uses: google-github-actions/auth@v2
         with:
-          # worklaod idenity federation enables applications to replace long-lived service account keys with short-lived access tokens 
-          workload_identity_provider: 'projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider'
-          project_id: 'liatrio-exercise-420917'
+          project_id: liatrio-exercise-420917
+         #workload_identity_provider: projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider'
+          workload_identity_provider: projects/179801824443/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+
 
       # - name: Push Docker Image to Artifact registry
       # #tagging configures docker image to be pushed to a specific location
