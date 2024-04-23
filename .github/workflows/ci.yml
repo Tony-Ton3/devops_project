@@ -43,7 +43,7 @@ jobs:
         uses: google-github-actions/auth@v1
         with:
           token_format: access_token
-          workload_identity_provider: projects/179801824443/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+          workload_identity_provider: projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github
           service_account: 179801824443-compute@developer.gserviceaccount.com
 
       - name: Login to GAR
@@ -53,6 +53,7 @@ jobs:
           username: oauth2accesstoken
           #access token is dynamically generated through auth@v1
           password: ${{ steps.auth.outputs.access_token }}
+          
       # - name: GCP Authentication with Workload Identity
       #   uses: google-github-actions/auth@v2
       #   with:
