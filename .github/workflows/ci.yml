@@ -38,14 +38,20 @@ jobs:
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/test-image:latest
 
-      - name: Authenticate to Google Cloud
-        id: auth
-        uses: google-github-actions/auth@v1
+      # - name: Authenticate to Google Cloud
+      #   id: auth
+      #   uses: google-github-actions/auth@v1
+      #   with:
+      #     token_format: access_token
+      #     workload_identity_provider: projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+      #     service_account: 179801824443-compute@developer.gserviceaccount.com
+      #     project_id: liatrio-exercise-420917 
+
+      - name: GCP Authentication with Workload Identity
+        uses: google-github-actions/auth@v2
         with:
-          token_format: access_token
-          workload_identity_provider: projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github
-          service_account: 179801824443-compute@developer.gserviceaccount.com
-          project_id: liatrio-exercise-420917 
+          project_id: liatrio-exercise-420917
+          workload_identity_provider: projects/179801824443/locations/global/workloadIdentityPools/github-actions-pool/providers/github
 
       - name: Login to GAR
         uses: docker/login-action@v3
@@ -61,12 +67,12 @@ jobs:
       #     project_id: liatrio-exercise-420917
       #     workload_identity_provider: projects/179801824443/locations/global/workloadIdentityPools/github-actions-pool/providers/github
 
-      - name: Push Docker Image to Artifact registry
-        #tagging configures docker image to be pushed to a specific location
-        run: |
-          docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
-          docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest
-          docker push us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest 
+      # - name: Push Docker Image to Artifact registry
+      #   #tagging configures docker image to be pushed to a specific location
+      #   run: |
+      #     docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
+      #     docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest
+      #     docker push us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest 
 
     
       
