@@ -44,13 +44,6 @@ jobs:
           project_id: liatrio-exercise-420917
           workload_identity_provider: projects/179801824443/locations/global/workloadIdentityPools/github-actions-pool/providers/github
 
-      - name: Login to Google's Artifact Registry
-        uses: docker/login-action@v3
-        with:
-          registry: us-west1-docker.pkg.dev
-          username: oauth2accesstoken
-          password: ${{ steps.auth.outputs.access_token }}
-          
       - name: Push Docker Image to Artifact registry
         #tagging configures docker image to be pushed to a specific location
         run: |
