@@ -42,7 +42,7 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           project_id: liatrio-exercise-420917
-          workload_identity_provider: projects/179801824443/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+          workload_identity_provider: projects/179801824443/locations/use-west1-docker.pkg.dev/workloadIdentityPools/github-actions-pool/providers/github
 
       - name: Push Docker Image to Artifact Registry
         run: |
