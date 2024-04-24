@@ -45,7 +45,6 @@ jobs:
           workload_identity_provider: projects/179801824443/locations/global/workloadIdentityPools/github-actions-pool/providers/github
 
       - name: Push Docker Image to Artifact registry
-        #tagging configures docker image to be pushed to a specific location
         run: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
           docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest
