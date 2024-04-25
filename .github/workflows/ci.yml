@@ -43,7 +43,7 @@ jobs:
         uses: google-github-actions/auth@v1
         with:
           token_format: access_token
-          workload_identity_provider: projects/179801824443-compute@developer.gserviceaccount.com/locations/global/workloadIdentityPools/github-actions-pool/providers/github
+          workload_identity_provider: projects/liatrio-exercise-420917/locations/global/workloadIdentityPools/github-actions-pool/providers/github 
           service_account: 179801824443-compute@developer.gserviceaccount.com
 
       - name: Login to GCR
