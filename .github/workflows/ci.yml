@@ -44,6 +44,9 @@ jobs:
           registry: 138081790090.dkr.ecr.us-east-1.amazonaws.com
           username: ${{ secrets.AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Pull Image from Docker Hub
+        run: docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
       
       - name: Tag for ECR
         run: docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest 138081790090.dkr.ecr.us-east-1.amazonaws.com/docker-images:latest  
