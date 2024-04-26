@@ -38,30 +38,15 @@ jobs:
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/test-image:latest
 
-      - name: Authenticate to Google Cloud
-        id: auth
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: projects/179801824443/locations/global/workloadIdentityPools/github-actions-pool/providers/github
-
-      - name: Login to GCR
+      - name: Login to ECR
         uses: docker/login-action@v3
         with:
-          registry: gcr.io
-          username: oauth2accesstoken
-          password: ${{ steps.auth.outputs.access_token }}
-      # - name: GCP Authentication with Workload Identity
-      #   uses: google-github-actions/auth@v2
-      #   with:
-      #     service_account: 179801824443-compute@developer.gserviceaccount.com
-      #     project_id: liatrio-exercise-420917
-      #     workload_identity_provider: projects/179801824443/locations/global/workloadIdentityPools/github-actions-pool/providers/github
-      
-      # - name: Push Docker Image to Artifact Registry
-      #   run: |
-      #     docker pull ${{ secrets.DOCKER_USERNAME }}/test-image:latest
-      #     docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest
-      #     docker push us-west1-docker.pkg.dev/liatrio-exercise-420917/liatrio_exercise/dockerhub-image:latest 
+          registry: 138081790090.dkr.ecr.us-east-1.amazonaws.com
+          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          
+    
+
 
 
     
