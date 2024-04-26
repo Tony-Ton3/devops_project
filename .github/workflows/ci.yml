@@ -49,7 +49,7 @@ jobs:
         run: docker tag ${{ secrets.DOCKER_USERNAME }}/test-image:latest 138081790090.dkr.ecr.us-east-1.amazonaws.com/docker-images:latest  
 
       - name: Push to ECR
-        run: docker push 138081790090.dkr.ecr.us-east-1.amazonaws.com/docker-images:latest 
+        run: docker push 138081790090.dkr.ecr.us-east-1.amazonaws.com/liatrio_interview_exercice_ecr_repo:latest 
           
     
 
