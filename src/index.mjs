@@ -17,5 +17,3 @@ app.get('/', (req, res) => {
 app.listen(curPort, () => {
   console.log(`Runninng on port ${curPort}`);
 });
-
-

@@ -58,13 +58,17 @@ jobs:
         run: docker pull ${{ secrets.ECR_IMAGE_URI }}
       
       - name: Get EC2 host key
-        run: ssh-keyscan 35.87.95.9 >> ~/.ssh/known_hosts
+        run: |
+          mkdir -p ~/.ssh  # Create the directory if needed
+          ssh-keyscan 35.87.95.9 >> ~/.ssh/known_hosts
 
       - name: Deploy to EC2
         run: |
           echo "${{ secrets.SECRET_KEY }}" > keypair.pem 
           chmod 600 keypair.pem
           ssh -i keypair.pem ec2-user@35.87.95.9 'docker container run -d --name active --publish 80:80 ${{ secrets.ECR_IMAGE_URI }}' 
+
+        
           
     
 
