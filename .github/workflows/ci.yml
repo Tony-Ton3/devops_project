@@ -61,7 +61,7 @@ jobs:
         run: |
           echo "${{ secrets.SECRET_KEY }}" > keypair.pem 
           chmod 600 keypair.pem
-          ssh -i keypair.pem ec2-user@35.87.95.9 'docker container run -d --name active --publish 80:80 ${{ secrets.ECR_IMAGE_URI }}' 
+          ssh -i keypair.pem ec2-user@35.87.95.9 'docker container run -d --name active --publish 22:22 ${{ secrets.ECR_IMAGE_URI }}' 
           
     
 
