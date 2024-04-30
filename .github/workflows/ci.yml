@@ -62,7 +62,7 @@ jobs:
           mkdir -p ~/.ssh  # Create the directory if needed
           ssh-keyscan 35.87.95.9 >> ~/.ssh/known_hosts
 
-      - name: Deploy to EC2
+      - name: Deploy to the EC2
         run: |
           echo "${{ secrets.SECRET_KEY }}" > keypair.pem 
           chmod 600 keypair.pem
