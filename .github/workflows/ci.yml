@@ -53,6 +53,12 @@ jobs:
 
       - name: Push to ECR
         run: docker push public.ecr.aws/b2i0s2v3/liatrio_interview_exercise_ecr_repo:latest
+      
+      - name: Pull Image from ECR
+        run: docker pull ${{ secrets.ECR_IMAGE_URI }}
+
+      - name: Deploy to EC2
+        run: ssh -i ${{ secrets.SECRET_KEY }} ec2-user@35.87.95.9 'docker run -d -p 80:80 ${{ secrets.ECR_IMAGE_URI }}' 
           
     
 
