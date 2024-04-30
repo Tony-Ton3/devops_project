@@ -57,7 +57,7 @@ jobs:
       - name: Pull Image from ECR
         run: docker pull ${{ secrets.ECR_IMAGE_URI }}
       
-      - name: Get EC2 Host key
+      - name: Get EC2 Host Key
         run: |
           mkdir -p ~/.ssh  # Create the directory if needed
           ssh-keyscan 35.87.95.9 >> ~/.ssh/known_hosts
