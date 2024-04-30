@@ -59,7 +59,7 @@ jobs:
       
       - name: Get EC2 Host Key
         run: |
-          mkdir -p ~/.ssh  # Create the directory if needed
+          mkdir -p ~/.ssh 
           ssh-keyscan 35.87.95.9 >> ~/.ssh/known_hosts
 
       - name: Deploy to the EC2
