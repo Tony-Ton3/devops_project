@@ -1,5 +1,5 @@
 # using long term support node version 
-FROM node:v20.12.1
+FROM node:latest
 
 # setting workdir to /src for conventional sake since the core functionality of the app is in the src folder
 WORKDIR /src
